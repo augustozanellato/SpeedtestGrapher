@@ -1,7 +1,6 @@
 FROM python:3.8-alpine
 ENV TZ="Europe/Rome"
 RUN apk add tzdata
-CMD cp /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN mkdir /speedtest
 COPY requirements.txt /speedtest
 RUN pip install -r /speedtest/requirements.txt
