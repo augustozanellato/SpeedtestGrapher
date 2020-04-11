@@ -1,0 +1,5 @@
+.vscode/
+mariadb-data/
+nginx-data/
+db.config
+env/

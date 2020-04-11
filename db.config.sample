@@ -1,0 +1,4 @@
+MYSQL_ROOT_PASSWORD="SuperSecretRootPassword"
+MYSQL_DATABASE="SPEEDTEST"
+MYSQL_USER="speedtest_user"
+MYSQL_PASSWORD="SuperSecretUserPassword"

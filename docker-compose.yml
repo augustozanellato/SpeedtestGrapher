@@ -1,0 +1,34 @@
+version: "3.2"  
+services:
+    runner:
+        build:
+            context: ./runner
+        environment: 
+            TZ: "Europe/Rome"
+            TEST_INTERVAL_MINUTES: 10
+        depends_on:
+            - db
+        volumes:
+            - "./db.config:/speedtest/.env"
+        
+    db:
+        image: linuxserver/mariadb:latest
+        volumes:
+            - "./mariadb-data:/config"
+            - "./db.config:/config/env"
+        environment: 
+            TZ: "Europe/Rome"
+            PUID: 1000
+            PGID: 1000
+    frontend:
+        image: linuxserver/nginx:latest
+        volumes:
+            - "./nginx-data:/config"
+            - "./frontend:/config/www"
+            - "./db.config:/config/db.config"
+        environment: 
+            TZ: "Europe/Rome"
+            PUID: 1000
+            PGID: 1000
+        ports:
+            - 8080:80
